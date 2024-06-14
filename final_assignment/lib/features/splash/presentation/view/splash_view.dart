@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     Text(
                       'GLAM CRAFT',
                       style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 34,
                         fontWeight: FontWeight.w600,
                         color: Colors.pinkAccent,
                         fontFamily: 'Helvetica',
