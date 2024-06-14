@@ -12,7 +12,7 @@ class NavigateRoute {
     );
   }
 
-  // Close the current Screen and Open another Screen
+  
   static void popAndPushRoute(Widget view) {
     Navigator.pushReplacement(
       AppNavigator.navigatorKey.currentState!.context,
