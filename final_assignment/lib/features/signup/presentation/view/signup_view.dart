@@ -51,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         TextFormField(
                           controller: _firstnameController,
                           decoration: const InputDecoration(
-                            labelText: 'Full Name',
+                            labelText: 'FullName',
                             prefixIcon: Icon(Icons.person),
                           ),
                           validator: (value) {

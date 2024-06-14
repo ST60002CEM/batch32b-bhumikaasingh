@@ -48,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
                     children: [
                       ResponsiveText(
                         'Login',
-                        fontSize: 18,
+                        fontSize: 30,
                         fontWeight: FontWeight.w500,
                       ),
                     ],
@@ -61,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
                     children: [
                       const ResponsiveText(
                         'Email',
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
                       TextFormField(
@@ -84,7 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                       const SizedBox(height: 16),
                       const ResponsiveText(
                         'Password',
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
                       TextFormField(
