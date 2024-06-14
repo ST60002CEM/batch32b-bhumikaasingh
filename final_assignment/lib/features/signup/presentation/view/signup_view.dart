@@ -1,5 +1,6 @@
 import 'package:final_assignment/core/utils/asset_provider.dart';
-import 'package:final_assignment/screen/signin_page.dart';
+import 'package:final_assignment/features/login/presentation/view/signin_view.dart';
+
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {

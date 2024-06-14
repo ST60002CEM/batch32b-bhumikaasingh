@@ -1,6 +1,7 @@
 import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
-import 'package:final_assignment/screen/signin_page.dart';
+import 'package:final_assignment/features/login/presentation/view/signin_view.dart';
+
 import 'package:final_assignment/widgets/responsive_text.dart';
 import 'package:flutter/material.dart';
 
