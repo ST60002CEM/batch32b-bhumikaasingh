@@ -67,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          hintText: "someone@gmail.com",
+                          hintText: "bhumi@gmail.com",
                           filled: true,
                           fillColor: Colors.grey[200],
                         ),
