@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     Text(
                       'Cosmetic Shop',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 21,
                         fontWeight: FontWeight.w400,
                         color: Colors.purple.shade300,
                         fontFamily: 'Helvetica',
