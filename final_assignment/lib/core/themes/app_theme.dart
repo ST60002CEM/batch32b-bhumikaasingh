@@ -6,7 +6,6 @@ class AppTheme {
 
   static getApplicationTheme(bool isDark) {
     return ThemeData(
-      // change the theme according to the user preference
       colorScheme: isDark
           ? const ColorScheme.dark(
               primary: ThemeConstant.darkPrimaryColor,
