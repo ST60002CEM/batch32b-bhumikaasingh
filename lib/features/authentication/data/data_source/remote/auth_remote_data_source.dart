@@ -26,11 +26,15 @@ class AuthRemoteDataSource {
       Response response = await dio.post(
         ApiEndpoints.register,
         data: {
+          "firstName": user.firstName,
+          "lastName": user.lastName,
           "email": user.email,
           "password": user.password,
         },
       );
+      print(response);
       if (response.statusCode == 200) {
+        print(response);
         return const Right(true);
       } else {
         return Left(
