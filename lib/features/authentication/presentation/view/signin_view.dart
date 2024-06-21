@@ -1,6 +1,7 @@
 import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
 import 'package:final_assignment/features/authentication/presentation/view/signup_view.dart';
+import 'package:final_assignment/features/authentication/presentation/view_model/auth_view_model.dart';
 
 import 'package:final_assignment/screen/dashboard.dart';
 import 'package:final_assignment/screen/signup_page.dart';
@@ -132,11 +133,15 @@ class _SignInPageViewState extends ConsumerState<SignInPageView> {
                       SizedBox(height: kHorizontalMargin),
                       Center(
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
+                          onPressed: () async {
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => HomePage()));
+                            await ref
+                                .read(authViewModelProvider.notifier)
+                                .signInPage(_emailController.text,
+                                    _passwordController.text);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue.shade300,
