@@ -19,7 +19,7 @@ class ApiEndpoints {
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
   // static const String baseUrl = "http://10.0.2.2:3000/api/v1/"; emuletor
-  static const String baseUrl = "http://10.1.16.113:5500/api/user/";
+  static const String baseUrl = "http://10.1.16.113:5000/api/user/";
 
   // ====================== Auth Routes ======================
   static const String login = "login";
