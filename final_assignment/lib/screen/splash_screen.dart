@@ -1,25 +1,20 @@
 import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
-import 'package:final_assignment/features/splash/presentation/view_model/splash_view_model.dart';
+import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
 import 'package:final_assignment/screen/signin_page.dart';
+
+
 import 'package:final_assignment/widgets/responsive_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SplashView extends ConsumerStatefulWidget {
-  const SplashView({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  ConsumerState<SplashView> createState() => _SplashViewState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashViewState extends ConsumerState<SplashView> {
-  @override
-  void initState() {
-    ref.read(splashViewModelProvider.notifier).openSignInView();
-    super.initState();
-  }
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
