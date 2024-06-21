@@ -1,5 +1,8 @@
 import 'package:final_assignment/core/utils/asset_provider.dart';
+import 'package:final_assignment/features/authentication/data/model/auth_hive_model.dart';
+import 'package:final_assignment/features/authentication/domain/entity/auth_entity.dart';
 import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
+import 'package:final_assignment/features/authentication/presentation/view_model/auth_view_model.dart';
 import 'package:final_assignment/screen/signin_page.dart';
 
 import 'package:flutter/material.dart';
@@ -133,14 +136,18 @@ class _SignUpPageViewState extends ConsumerState<SignUpPageView> {
                         ),
                         const SizedBox(height: 30.0),
                         ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState?.validate() ?? false) {
-                              _performSignUp(
-                                _firstNameController.text,
-                                _lastNameController.text,
-                                _emailController.text,
-                                _passwordController.text,
-                              );
+                              // await ref.read(authHiveModelProvider.notifier).
+                              var user = AuthEntity(
+                                  firstName: _firstNameController.text,
+                                  lastName: _lastNameController.text,
+                                  email: _emailController.text,
+                                  password: _passwordController.text);
+
+                              await ref
+                                  .read(authViewModelProvider.notifier)
+                                  .signUpPage(user);
                             }
                           },
                           style: ElevatedButton.styleFrom(
