@@ -61,7 +61,6 @@ class ProductApiModel {
     };
   }
 
-  // Convert API Object to Entity
   ProductEntiry toEntity() => ProductEntiry(
         productId: productId,
         productName: productName,
@@ -72,7 +71,7 @@ class ProductApiModel {
         createdAt: createdAt,
       );
 
-  // Convert Entity to API Object
+  
   ProductApiModel fromEntity(ProductEntiry entity) => ProductApiModel(
         productId: entity.productId ?? '',
         productName: entity.productName,
