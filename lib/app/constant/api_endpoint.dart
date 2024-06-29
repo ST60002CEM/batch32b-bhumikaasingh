@@ -19,14 +19,14 @@ class ApiEndpoints {
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
   // static const String baseUrl = "http://10.0.2.2:3000/api/v1/"; emuletor
-  static const String baseUrl = "http://192.168.1.112:5000/api/user/";
+  static const String baseUrl = "http://10.1.16.113:5000/api/user/";
 
   // ====================== Auth Routes ======================
   static const String login = "user/login";
   static const String register = "user/create";
-  static const String getProducts = "products/get_all_products";
+  static const String getProducts = "get_all_products";
   static const limitPage = 5;
 
-  static const String imageUrl = "http://192.168.1.112:5000/uploads/";
+  static const String imageUrl = "http://10.1.16.113:5000/uploads/";
   static const String uploadImage = "auth/uploadImage";
 }
