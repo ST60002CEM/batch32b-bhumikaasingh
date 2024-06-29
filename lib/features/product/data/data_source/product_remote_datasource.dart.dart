@@ -36,8 +36,7 @@ class ProductRemoteDatasource {
         return Right((response.data['products'] as List)
             .map((product) => ProductApiModel.fromJson(product).toEntity())
             .toList());
-        // //OR
-        // //2nd way
+        
         // GetAllProductDTO productAddDTO = GetAllProductDTO.fromJson(response.data);
         // return Right(ProductApiModel.toEntityList(productAddDTO.data));
       } else {
