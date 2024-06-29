@@ -22,8 +22,11 @@ class ApiEndpoints {
   static const String baseUrl = "http://10.1.16.113:5000/api/user/";
 
   // ====================== Auth Routes ======================
-  static const String login = "login";
-  static const String register = "create";
-  // static const String imageUrl = "http://10.0.2.2:3000/uploads/";
-  // static const String uploadImage = "auth/uploadImage";
+  static const String login = "user/login";
+  static const String register = "user/create";
+  static const String getProducts = "get_all_products";
+  static const limitPage = 5;
+
+  static const String imageUrl = "http://10.1.16.113:5000/uploads/";
+  static const String uploadImage = "auth/uploadImage";
 }
