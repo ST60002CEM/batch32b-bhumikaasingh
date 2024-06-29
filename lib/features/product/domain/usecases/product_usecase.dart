@@ -9,7 +9,7 @@ final productUsecaseProvider = Provider<ProductUsecase>(
  
 class ProductUsecase {
   final IProductRepository productRepository;
-  ProductUsecase({required this.productRepository});   //dependency injection
+  ProductUsecase({required this.productRepository});   
  
   Future<Either<Failure, List<ProductEntiry>>> getAllProducts(int page) {
     return productRepository.getAllProducts(page);
