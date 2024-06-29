@@ -71,7 +71,7 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                         Expanded(
                           child: Image.asset(
                             Assets.images
-                                .SplashScreen, // replace with your product image path
+                                .SplashScreen, 
                             fit: BoxFit.cover,
                           ),
                         ),
