@@ -59,7 +59,7 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                   crossAxisSpacing: 10,
                   childAspectRatio: 2 / 3,
                 ),
-                itemCount: 10, // 2x5 grid means 10 items
+                itemCount: 10, 
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3,
