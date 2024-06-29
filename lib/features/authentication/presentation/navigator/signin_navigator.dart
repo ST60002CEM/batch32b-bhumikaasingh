@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final SignInViewNavigatorProvider = Provider((ref) => SignInViewNavigator());
 
-class SignInViewNavigator with SignUpViewRoute,HomePageViewRoute {}
+class SignInViewNavigator with SignUpViewRoute {}
 
 mixin SignInViewRoute {
   openSignInView() {
