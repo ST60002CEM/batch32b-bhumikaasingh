@@ -4,7 +4,7 @@ import 'package:final_assignment/features/product/data/repository/product_remote
 import 'package:final_assignment/features/product/domain/entity/product_entiry.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// Instead of Local now call Remote repository
+
 final productRepositoryProvider = Provider<IProductRepository>((ref) {
   return ref.read(productRemoteRepositoryProvider);
 });
