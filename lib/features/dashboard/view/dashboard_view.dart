@@ -1,5 +1,8 @@
+import 'package:final_assignment/app/navigator/navigator.dart';
 import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
+import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
+import 'package:final_assignment/features/product/presentation/viewmodel/product_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,10 +14,44 @@ class HomePageView extends ConsumerStatefulWidget {
 }
 
 class _HomePageViewState extends ConsumerState<HomePageView> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   final TextEditingController _searchController = TextEditingController();
+//   late DoubleShakeDetectorService _doubleShakeDetectorService;
+
+// @override
+// void initState() {
+//   super.initState();
+//   // Initialize shake detection service
+//   _doubleShakeDetectorService = DoubleShakeDetectorService(onShake: _handleShake);
+//   _doubleShakeDetectorService.startListening();
+// }
+
+// @override
+// void dispose() {
+//   // Clean up when the widget is disposed
+//   _doubleShakeDetectorService.stopListening();
+//   super.dispose();
+// }
+
+// void _handleShake() {
+//   _doubleShakeDetectorService.stopListening();
+//   _logout();
+// }
+
+// void _logout() {
+//   NavigateRoute.pushRoute(const SignInPageView());
+// }
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(productViewModelProvider);
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -59,8 +96,9 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                   crossAxisSpacing: 10,
                   childAspectRatio: 2 / 3,
                 ),
-                itemCount: 10, 
+                itemCount: state.lstProducts.length,
                 itemBuilder: (context, index) {
+                  final product = state.lstProducts[index];
                   return Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
@@ -70,15 +108,14 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                       children: [
                         Expanded(
                           child: Image.asset(
-                            Assets.images
-                                .SplashScreen, 
+                            Assets.images.SplashScreen,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Product Name $index',
+                            product.productName!,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
