@@ -46,13 +46,13 @@ void main() {
     expect(authState.imageName, isNull);
   });
  
-  group('SignInPage Test', () {
-    test('SignInPage test with invalid email and password', () async {
+  group('SignInPageView Test', () {
+    test('SignInPageView test with invalid email and password', () async {
       // Arrange
-      when(mockAuthUsecase.login('bhumi@gmail.com', '123456'))
+      when(mockAuthUsecase.login('bhumii@gmail.com', '123456'))
           .thenAnswer((_) => Future.value(const Right(true)));
  
-      when(mockAuthUsecase.login('bhumii@gmail.com', 'invalidpass'))
+      when(mockAuthUsecase.login('bhumi1@gmail.com', 'invalidpass'))
           .thenAnswer((_) => Future.value(
                 Left(
                   Failure(error: 'Invalid Credentails'),
@@ -62,7 +62,7 @@ void main() {
       // Act
       await container
           .read(authViewModelProvider.notifier)
-          .signInPage('bhumi@gmail.com', '123456');
+          .signInPage('bhumii@gmail.com', '123456');
  
       final authState = container.read(authViewModelProvider);
  
@@ -70,9 +70,9 @@ void main() {
       expect(authState.error, isNull);
     });
  
-    test('signInPage test with valid email and password', () async {
+    test('SignInPageView test with valid email and password', () async {
       // Arrange
-      const email = 'bhumi@gmail.com';
+      const email = 'bhumii@gmail.com';
       const password = '123456';
  
       when(mockAuthUsecase.login(email, password)).thenAnswer((invocation) {
@@ -86,7 +86,7 @@ void main() {
       // Act
       await container
           .read(authViewModelProvider.notifier)
-          .signInPage('bhumi@gmail.com', '123456');
+          .signInPage('bhumii@gmail.com', '123456');
  
       final authState = container.read(authViewModelProvider);
  
@@ -95,11 +95,11 @@ void main() {
     });
   });
  
-  test('SignUpPage User', () async {
+  test('SignUpPageView User', () async {
     // Arrange
-    const firstName = 'bhumika ';
-    const lastName = 'singh';
-    const email = 'bhumi@gmail.com';
+    const firstName = 'bh ';
+    const lastName = 'bh';
+    const email = 'bhumii@gmail.com';
     const password = '123456';
  
     const user = AuthEntity(
