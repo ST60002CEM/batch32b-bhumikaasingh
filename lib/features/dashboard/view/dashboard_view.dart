@@ -3,6 +3,7 @@ import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
 import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
 import 'package:final_assignment/features/product/presentation/viewmodel/product_viewmodel.dart';
+import 'package:final_assignment/features/sensors/domain/usecases/double_shake_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,31 +24,32 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
   }
 
   final TextEditingController _searchController = TextEditingController();
-//   late DoubleShakeDetectorService _doubleShakeDetectorService;
+  late DoubleShakeDetectorService _doubleShakeDetectorService;
 
-// @override
-// void initState() {
-//   super.initState();
-//   // Initialize shake detection service
-//   _doubleShakeDetectorService = DoubleShakeDetectorService(onShake: _handleShake);
-//   _doubleShakeDetectorService.startListening();
-// }
+  @override
+  void initState() {
+    super.initState();
+    // Initialize shake detection service
+    _doubleShakeDetectorService =
+        DoubleShakeDetectorService(onShake: _handleShake);
+    _doubleShakeDetectorService.startListening();
+  }
 
-// @override
-// void dispose() {
-//   // Clean up when the widget is disposed
-//   _doubleShakeDetectorService.stopListening();
-//   super.dispose();
-// }
+  // @override
+  // void dispose() {
+  //   // Clean up when the widget is disposed
+  //   _doubleShakeDetectorService.stopListening();
+  //   super.dispose();
+  // }
 
-// void _handleShake() {
-//   _doubleShakeDetectorService.stopListening();
-//   _logout();
-// }
+  void _handleShake() {
+    _doubleShakeDetectorService.stopListening();
+    _logout();
+  }
 
-// void _logout() {
-//   NavigateRoute.pushRoute(const SignInPageView());
-// }
+  void _logout() {
+    NavigateRoute.pushRoute(const SignInPageView());
+  }
 
   @override
   Widget build(BuildContext context) {
