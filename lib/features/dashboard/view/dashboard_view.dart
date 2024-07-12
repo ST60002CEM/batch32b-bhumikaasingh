@@ -17,12 +17,6 @@ class HomePageView extends ConsumerStatefulWidget {
 class _HomePageViewState extends ConsumerState<HomePageView> {
   final ScrollController _scrollController = ScrollController();
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
   final TextEditingController _searchController = TextEditingController();
   late DoubleShakeDetectorService _doubleShakeDetectorService;
 
@@ -35,12 +29,12 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
     _doubleShakeDetectorService.startListening();
   }
 
-  // @override
-  // void dispose() {
-  //   // Clean up when the widget is disposed
-  //   _doubleShakeDetectorService.stopListening();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _doubleShakeDetectorService.stopListening();
+    super.dispose();
+  }
 
   void _handleShake() {
     _doubleShakeDetectorService.stopListening();
@@ -48,6 +42,7 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
   }
 
   void _logout() {
+    print('shack');
     NavigateRoute.pushRoute(const SignInPageView());
   }
 
