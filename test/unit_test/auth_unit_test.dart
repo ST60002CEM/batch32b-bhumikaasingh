@@ -49,10 +49,10 @@ void main() {
   group('SignInPageView Test', () {
     test('SignInPageView test with invalid email and password', () async {
       // Arrange
-      when(mockAuthUsecase.login('bhumii@gmail.com', '123456'))
+      when(mockAuthUsecase.login('bhumi1@gmail.com', '123456'))
           .thenAnswer((_) => Future.value(const Right(true)));
  
-      when(mockAuthUsecase.login('bhumi1@gmail.com', 'invalidpass'))
+      when(mockAuthUsecase.login('bhumi12@gmail.com', 'invalidpass'))
           .thenAnswer((_) => Future.value(
                 Left(
                   Failure(error: 'Invalid Credentails'),
@@ -62,7 +62,7 @@ void main() {
       // Act
       await container
           .read(authViewModelProvider.notifier)
-          .signInPage('bhumii@gmail.com', '123456');
+          .signInPage('bhumi1@gmail.com', '123456');
  
       final authState = container.read(authViewModelProvider);
  
@@ -72,7 +72,7 @@ void main() {
  
     test('SignInPageView test with valid email and password', () async {
       // Arrange
-      const email = 'bhumii@gmail.com';
+      const email = 'bhumi1@gmail.com';
       const password = '123456';
  
       when(mockAuthUsecase.login(email, password)).thenAnswer((invocation) {
@@ -86,7 +86,7 @@ void main() {
       // Act
       await container
           .read(authViewModelProvider.notifier)
-          .signInPage('bhumii@gmail.com', '123456');
+          .signInPage('bhumi1@gmail.com', '123456');
  
       final authState = container.read(authViewModelProvider);
  
@@ -97,9 +97,9 @@ void main() {
  
   test('SignUpPageView User', () async {
     // Arrange
-    const firstName = 'bh ';
-    const lastName = 'bh';
-    const email = 'bhumii@gmail.com';
+    const firstName = 'gg ';
+    const lastName = 'gg';
+    const email = 'bhumi1@gmail.com';
     const password = '123456';
  
     const user = AuthEntity(
