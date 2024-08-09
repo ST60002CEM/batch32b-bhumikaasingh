@@ -170,7 +170,7 @@ class _SignUpPageViewState extends ConsumerState<SignUpPageView> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: ((context) => SignInPage())));
+                                    builder: ((context) => SignInPageView())));
                           },
                           child: const Text(
                             'Already have an account? Log In',

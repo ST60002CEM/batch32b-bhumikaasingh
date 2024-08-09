@@ -113,10 +113,10 @@ class _SignInPageViewState extends ConsumerState<SignInPageView> {
                         obscureText: _isemailHidden,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
+                            return 'Please enter your Password';
                           }
                           if (value.length < 6) {
-                            return 'email must be at least 6 characters long';
+                            return 'password must be at least 6 characters long';
                           }
                           return null;
                         },
