@@ -4,7 +4,10 @@ import 'package:final_assignment/app/navigator/navigator.dart';
 import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
 import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
+import 'package:final_assignment/features/cart/presentation/view/cart_view.dart';
+import 'package:final_assignment/features/favourite/presentation/view/favourite_view.dart';
 import 'package:final_assignment/features/product/presentation/viewmodel/product_viewmodel.dart';
+import 'package:final_assignment/features/profile/presentation/view/profile_view.dart';
 import 'package:final_assignment/features/sensors/domain/usecases/double_shake_use_case.dart';
 import 'package:final_assignment/features/sensors/domain/usecases/gyroscope_usecase.dart';
 
@@ -31,8 +34,9 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
 
   final List<Widget> bottomScreens = [
     const HomePageView(),
-    const HomePageView(),
-    const HomePageView(),
+    const ProfileView(),
+    const CartView(),
+    const FavouriteView(),
   ];
 
   @override
@@ -128,14 +132,14 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                         Expanded(
                           child: Image.asset(
                             Assets.images
-                                .SplashScreen, // replace with your product image path
+                                .Sunscreen, // replace with your product image path
                             fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Product Name $index',
+                            'Foundation $index',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -152,8 +156,8 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.green,
+        backgroundColor: Colors.green,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
