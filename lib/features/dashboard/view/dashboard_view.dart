@@ -1,11 +1,16 @@
+import 'dart:async';
+
 import 'package:final_assignment/app/navigator/navigator.dart';
 import 'package:final_assignment/core/utils/asset_provider.dart';
 import 'package:final_assignment/core/utils/util.dart';
 import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
 import 'package:final_assignment/features/product/presentation/viewmodel/product_viewmodel.dart';
 import 'package:final_assignment/features/sensors/domain/usecases/double_shake_use_case.dart';
+import 'package:final_assignment/features/sensors/domain/usecases/gyroscope_usecase.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 
 class HomePageView extends ConsumerStatefulWidget {
   const HomePageView({super.key});
@@ -20,6 +25,16 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
   final TextEditingController _searchController = TextEditingController();
   late DoubleShakeDetectorService _doubleShakeDetectorService;
 
+  late GyroscopeService _gyroscopeService;
+  late StreamSubscription<GyroscopeEvent> _gyroscopeSubscription;
+  int _selectedIndex = 0;
+
+  final List<Widget> bottomScreens = [
+    const HomePageView(),
+    const HomePageView(),
+    const HomePageView(),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -27,12 +42,23 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
     _doubleShakeDetectorService =
         DoubleShakeDetectorService(onShake: _handleShake);
     _doubleShakeDetectorService.startListening();
+    _gyroscopeService = GyroscopeService();
+    _gyroscopeSubscription = _gyroscopeService.gyroscopeStream.listen((event) {
+      // Example: Check if the device is tilted in a specific direction
+      if (event.x > 1.0) {
+        // Perform an action, e.g., log out
+        _logout();
+      }
+    });
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
     _doubleShakeDetectorService.stopListening();
+    _gyroscopeSubscription.cancel();
+    _gyroscopeService.dispose();
+
     super.dispose();
   }
 
@@ -69,33 +95,29 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(
-                  horizontal: kHorizontalMargin, vertical: kVerticalMargin),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(16)),
-              child: Image.asset(
-                Assets.images.Banner,
-                fit: BoxFit.cover,
-              ),
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(
+                horizontal: kHorizontalMargin, vertical: kVerticalMargin),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+            child: Image.asset(
+              Assets.images.Banner,
+              fit: BoxFit.cover,
             ),
-            Padding(
+          ),
+          Expanded(
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                   childAspectRatio: 2 / 3,
                 ),
-                itemCount: state.lstProducts.length,
+                itemCount: 10, // Adjust this to the length of your product list
                 itemBuilder: (context, index) {
-                  final product = state.lstProducts[index];
                   return Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
@@ -105,14 +127,15 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                       children: [
                         Expanded(
                           child: Image.asset(
-                            Assets.images.SplashScreen,
+                            Assets.images
+                                .SplashScreen, // replace with your product image path
                             fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            product.productName!,
+                            'Product Name $index',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -125,8 +148,29 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
                 },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
+        elevation: 0,
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.library_add), label: 'Orders'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favourite'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
       ),
     );
   }
