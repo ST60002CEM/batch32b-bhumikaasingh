@@ -166,7 +166,7 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.library_add), label: 'Orders'),
+              icon: Icon(Icons.shopping_cart), label: 'Cart'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Favourite'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
