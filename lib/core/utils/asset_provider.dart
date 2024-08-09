@@ -13,7 +13,10 @@ class _AssetsImagesGen {
   String get EmergencyServices => '$kImagesPath/emergency .png';
   String get Banner => '$kImagesPath/banner.png';
   String get Logo => '$kImagesPath/Logo.png';
+  String get Foundation => '$kImagesPath/Foundation.png';
+  String get Sunscreen => '$kImagesPath/Sunscreeen.png';
 }
+
 
 class _AssetsSvgImagesGen {
   const _AssetsSvgImagesGen();
