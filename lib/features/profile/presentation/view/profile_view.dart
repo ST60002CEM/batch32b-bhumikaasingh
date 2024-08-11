@@ -6,10 +6,10 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        backgroundColor: Colors.blueAccent,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Profile'),
+      //   backgroundColor: Colors.green,
+      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -20,11 +20,9 @@ class ProfileView extends StatelessWidget {
               CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage(
-                    'assets/images/profile_picture.png'), // Replace with your profile image asset
+                    'assets/images/Profile.jpeg'), // Replace with your profile image asset
               ),
-              const SizedBox(height: 16),
-
-              // User Name
+              const SizedBox(height: 10),
               const Text(
                 'Bhumika Singh',
                 style: TextStyle(
@@ -32,28 +30,28 @@ class ProfileView extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-
-              // Email
+              const SizedBox(height: 1),
               const Text(
-                'bhumi@example.com',
+                'bhumi@gmail.com',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.black,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 4),
 
               // Divider
-              Divider(color: Colors.grey[300]),
+              Divider(color: Colors.black),
 
               // Info Section
+              const SizedBox(height: 14),
+              _buildInfoRow(Icons.phone, 'Phone', '+977-9835445327'),
               const SizedBox(height: 16),
-              _buildInfoRow(Icons.phone, 'Phone', '+1 123 456 7890'),
+              _buildInfoRow(Icons.location_on, 'Location', 'Kathmandu'),
               const SizedBox(height: 16),
-              _buildInfoRow(Icons.location_on, 'Location', 'San Francisco, CA'),
+              _buildInfoRow(Icons.reviews, 'My Reviews', 'January 2020'),
               const SizedBox(height: 16),
-              _buildInfoRow(Icons.calendar_today, 'Joined', 'January 2020'),
+              _buildInfoRow(Icons.dark_mode, 'Dark Mode', 'System'),
               const SizedBox(height: 32),
 
               // Edit Profile Button
@@ -67,31 +65,32 @@ class ProfileView extends StatelessWidget {
                   ),
                   backgroundColor: Colors.blueAccent,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 ),
                 child: const Text(
                   'Edit Profile',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 4),
 
               // Logout Button
               OutlinedButton(
                 onPressed: () {
                   // Handle logout
                 },
-                style: OutlinedButton.styleFrom(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  side: BorderSide(color: Colors.redAccent),
+                  side: BorderSide(color: Colors.black),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      const EdgeInsets.symmetric(horizontal: 36, vertical: 9),
                 ),
                 child: const Text(
                   'Logout',
-                  style: TextStyle(fontSize: 16, color: Colors.redAccent),
+                  style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
               ),
             ],
@@ -104,7 +103,7 @@ class ProfileView extends StatelessWidget {
   Widget _buildInfoRow(IconData icon, String title, String value) {
     return Row(
       children: [
-        Icon(icon, color: Colors.blueAccent),
+        Icon(icon, color: Colors.black),
         const SizedBox(width: 16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,16 +111,16 @@ class ProfileView extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
               value,
               style: const TextStyle(
-                fontSize: 16,
-                color: Colors.yellow,
+                fontSize: 14,
+                color: Colors.black,
               ),
             ),
           ],
