@@ -6,18 +6,17 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Cart'),
-        backgroundColor: Colors.deepOrangeAccent,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Cart'),
+      //   backgroundColor: Colors.green,
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Cart Items List
             Expanded(
               child: ListView.builder(
-                itemCount: 3, // Replace with the number of items in your cart
+                itemCount: 4, // Replace with the number of items in your cart
                 itemBuilder: (context, index) {
                   return _buildCartItem(context, index);
                 },
@@ -36,7 +35,7 @@ class CartView extends StatelessWidget {
                 // Handle checkout action
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepOrangeAccent,
+                backgroundColor: Colors.red,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -69,7 +68,7 @@ class CartView extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                'assets/images/product_image.png', // Replace with your product image asset
+                'assets/images/Sunscreeen.png', // Replace with your product image asset
                 width: 80,
                 height: 80,
                 fit: BoxFit.cover,
@@ -83,7 +82,7 @@ class CartView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Product Name',
+                    'Sunscreen',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -91,10 +90,10 @@ class CartView extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    '\$99.99', // Replace with product price
+                    'Rs.500', // Replace with product price
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.grey,
+                      color: Colors.black,
                     ),
                   ),
                 ],
@@ -105,19 +104,15 @@ class CartView extends StatelessWidget {
             Column(
               children: [
                 IconButton(
-                  icon: Icon(Icons.add_circle_outline,
-                      color: Colors.deepOrangeAccent),
-                  onPressed: () {
-                    // Increase quantity
-                  },
+                  icon: Icon(Icons.add_circle_outline, color: Colors.red),
+                  onPressed: () {},
                 ),
                 const Text(
                   '1', // Replace with the current quantity
                   style: TextStyle(fontSize: 16),
                 ),
                 IconButton(
-                  icon: Icon(Icons.remove_circle_outline,
-                      color: Colors.deepOrangeAccent),
+                  icon: Icon(Icons.remove_circle_outline, color: Colors.red),
                   onPressed: () {
                     // Decrease quantity
                   },
@@ -134,7 +129,7 @@ class CartView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Colors.grey[400],
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(

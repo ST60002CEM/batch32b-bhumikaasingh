@@ -6,6 +6,7 @@ import 'package:final_assignment/core/utils/util.dart';
 import 'package:final_assignment/features/authentication/presentation/view/signin_view.dart';
 import 'package:final_assignment/features/cart/presentation/view/cart_view.dart';
 import 'package:final_assignment/features/favourite/presentation/view/favourite_view.dart';
+import 'package:final_assignment/features/home/presentation/view/home_view.dart';
 import 'package:final_assignment/features/product/presentation/viewmodel/product_viewmodel.dart';
 import 'package:final_assignment/features/profile/presentation/view/profile_view.dart';
 import 'package:final_assignment/features/sensors/domain/usecases/double_shake_use_case.dart';
@@ -33,10 +34,10 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
   int _selectedIndex = 0;
 
   final List<Widget> bottomScreens = [
-    const HomePageView(),
-    const ProfileView(),
+    const HomeView(),
     const CartView(),
     const FavouriteView(),
+    const ProfileView(),
   ];
 
   @override
@@ -99,62 +100,7 @@ class _HomePageViewState extends ConsumerState<HomePageView> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: kHorizontalMargin, vertical: kVerticalMargin),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-            child: Image.asset(
-              Assets.images.Banner,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 2 / 3,
-                ),
-                itemCount: 10, // Adjust this to the length of your product list
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Image.asset(
-                            Assets.images
-                                .Sunscreen, // replace with your product image path
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Foundation $index',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: bottomScreens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.green,
         selectedItemColor: Colors.black,
