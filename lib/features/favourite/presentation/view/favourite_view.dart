@@ -6,14 +6,14 @@ class FavouriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Favourites'),
-        backgroundColor: Colors.pinkAccent,
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Favourites'),
+      //   backgroundColor: Colors.pinkAccent,
+      // ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: ListView.builder(
-          itemCount: 5, // Replace with the number of items in your favourites
+          itemCount: 8, // Replace with the number of items in your favourites
           itemBuilder: (context, index) {
             return _buildFavouriteItem(context, index);
           },
@@ -25,7 +25,7 @@ class FavouriteView extends StatelessWidget {
   Widget _buildFavouriteItem(BuildContext context, int index) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
-      elevation: 3,
+      elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -37,9 +37,9 @@ class FavouriteView extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                'assets/images/product_image.png', // Replace with your product image asset
-                width: 80,
-                height: 80,
+                'assets/images/Sunscreeen.png', // Replace with your product image asset
+                width: 90,
+                height: 90,
                 fit: BoxFit.cover,
               ),
             ),
@@ -51,7 +51,7 @@ class FavouriteView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Product Name',
+                    'Sunscreen',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -59,21 +59,19 @@ class FavouriteView extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    '\$99.99', // Replace with product price
+                    '\Rs.500', // Replace with product price
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.grey,
+                      color: Colors.black,
                     ),
                   ),
                 ],
               ),
             ),
-
-            // Remove from Favourites Button
             IconButton(
               icon: Icon(
                 Icons.favorite,
-                color: Colors.pinkAccent,
+                color: Colors.red,
               ),
               onPressed: () {
                 // Handle remove from favourites
