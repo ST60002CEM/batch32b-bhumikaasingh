@@ -25,6 +25,8 @@ class ProductState {
     );
   }
 
+  get products => null;
+
   ProductState copyWith({
     final List<ProductEntiry>? lstProducts,
     final bool? isLoading,
