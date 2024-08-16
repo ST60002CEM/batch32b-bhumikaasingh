@@ -144,7 +144,7 @@ class _SignInPageViewState extends ConsumerState<SignInPageView> {
                                     _passwordController.text);
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue.shade300,
+                            backgroundColor: Colors.lightGreen,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -189,7 +189,7 @@ class _SignInPageViewState extends ConsumerState<SignInPageView> {
                               ' Sign Up',
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              textColor: Colors.blue,
+                              textColor: Colors.lightGreen,
                             ),
                           ),
                         ],
